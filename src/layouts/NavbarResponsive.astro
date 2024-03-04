@@ -1,0 +1,39 @@
+---
+import IconSVG from "../components/IconSVG.astro";
+---
+
+<nav
+  class="flex md:hidden justify-end sticky max-w-[1100px] px-3 bg-[#2b2b31] top-0 p-2 border-b border-[#4c4c4c]"
+>
+  <button id="btnMenu" class="border border-[#4c4c4c] rounded">
+    <IconSVG iconData={[{ name: "burger", size: "40px" }]} />
+  </button>
+  <div
+    class="absolute max-h-0 bg-[#2b2b31] rounded transition-all flex flex-col overflow-hidden left-0 right-0"
+    id="responsiveMenu"
+  >
+    <div class="flex justify-end px-2 w-full">
+      <button class="cursor-pointer" id="closeMenu">
+        <IconSVG iconData={[{ name: "close", size: "40px" }]} />
+      </button>
+    </div>
+    <a href="#index" class="text-lg font-semibold py-3 px-5 text-lime-200"
+      >Home</a
+    >
+    <a href="#experience" class="text-lg font-semibold py-3 px-5 text-lime-200"
+      >Experiencia</a
+    >
+    <a href="#technologies" class="text-lg font-semibold py-3 px-5 text-lime-200"
+      >Tecnologías</a
+    >
+    <a href="#education" class="text-lg font-semibold py-3 px-5 text-lime-200"
+      >Formación</a
+    >
+    <a href="#sobremi" class="text-lg font-semibold py-3 px-5 text-lime-200"
+      >Sobre mí</a
+    >
+    <a href="#contact" class="text-lg font-semibold py-3 px-5 text-lime-200"
+      >¿Hablamos?</a
+    >
+  </div>
+</nav>

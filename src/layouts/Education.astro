@@ -1,0 +1,26 @@
+---
+import Section from "../components/Section.astro";
+import CardEducation from "../components/CardEducation.astro";
+
+const education = [
+  {
+    title: "Grado Superior en Desarrollo de Aplicaciones Web",
+    place: "CSC Jesuitas",
+    date: "2021-2023",
+  },
+  {
+    title:
+      "Certificado de Profesionalidad en Sistemas Microinformáticos (IFCT0209)",
+    place: "ADR Formación",
+    date: "2021 (630 horas)",
+  },
+];
+---
+
+<Section name="Formación" id="education">
+  {
+    education.map((education) => {
+      return <CardEducation data={education} />;
+    })
+  }
+</Section>

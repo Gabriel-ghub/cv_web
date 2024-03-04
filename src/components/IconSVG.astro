@@ -1,0 +1,83 @@
+---
+import ReactIcon from "./icons/React_icon.astro";
+import PhpIcon from "./icons/Php_icon.astro";
+import NodeIcon from "./icons/Node_icon.astro";
+import JsIcon from "./icons/Js_icon.astro";
+import GitIcon from "./icons/Git_icon.astro";
+import GhubIcon from "./icons/Ghub_icon.astro";
+import HtmlIcon from "./icons/Html_icon.astro";
+import WpIcon from "./icons/Wp_icon.astro";
+import NewTab from "./icons/NewTab_icon.astro";
+import BurgerIcon from "./icons/Burger_icon.astro";
+import TwindIcon from "./icons/Twind_icon.astro";
+import LinuxIcon from "./icons/Linux_icon.astro";
+import DockerIcon from "./icons/Docker_icon.astro";
+import SassIcon from "./icons/Sass_icon.astro";
+import CssIcon from "./icons/Css_icon.astro";
+import ArrowDown from "./icons/ArrowDown_icon.astro";
+import CodeIcon from "./icons/Code_icon.astro";
+import MysqlIcon from "./icons/Mysql_icon.astro";
+import BuildingIcon from "./icons/Building_icon.astro";
+import LinkedinIcon from "./icons/Linkedin_icon.astro";
+import TypescriptIcon from "./icons/TypeScript_icon.astro";
+import AstroIcon from "./icons/Astro_icon.astro";
+import GimpIcon from "./icons/Gimp_icon.astro";
+import FigmaIcon from "./icons/Figma_icon.astro";
+import CloseIcon from "./icons/Close_icon.astro";
+
+const ICONS = {
+  react: ReactIcon,
+  js: JsIcon,
+  php: PhpIcon,
+  node: NodeIcon,
+  git: GitIcon,
+  html: HtmlIcon,
+  wp: WpIcon,
+  twind: TwindIcon,
+  linux: LinuxIcon,
+  docker: DockerIcon,
+  burger: BurgerIcon,
+  css: CssIcon,
+  sass: SassIcon,
+  arrowDown: ArrowDown,
+  code: CodeIcon,
+  linkedin: LinkedinIcon,
+  ghub: GhubIcon,
+  newtab: NewTab,
+  building: BuildingIcon,
+  mysql: MysqlIcon,
+  typescript: TypescriptIcon,
+  astro: AstroIcon,
+  gimp: GimpIcon,
+  figma: FigmaIcon,
+  close: CloseIcon,
+};
+
+interface Icon {
+  name: string;
+  size: string;
+  styles?: string;
+  id?: string;
+}
+
+interface Props {
+  iconData: Array<Icon>;
+}
+
+const { iconData } = Astro.props;
+---
+
+{
+  iconData.map((icon) => {
+    if (ICONS[icon.name]) {
+      const Icon = ICONS[icon.name];
+      return (
+        <Icon
+          size={icon.size}
+          styles={icon.styles ? icon.styles : null}
+          id={icon.id ? icon.id : null}
+        />
+      );
+    }
+  })
+}

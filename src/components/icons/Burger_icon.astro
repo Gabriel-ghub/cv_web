@@ -1,0 +1,39 @@
+---
+const { size, styles, id } = Astro.props;
+---
+
+<svg
+  id={id ? id : null}
+  class={styles ? styles : null}
+  width={size}
+  height={size}
+  viewBox="0 0 50 50"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <g clip-path="url(#clip0_400_1890)">
+    <path
+      d="M8.3335 12.5H41.6668"
+      stroke="#CDF282"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"></path>
+    <path
+      d="M8.3335 25H41.6668"
+      stroke="#CDF282"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"></path>
+    <path
+      d="M8.3335 37.5H41.6668"
+      stroke="#CDF282"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"></path>
+  </g>
+  <defs>
+    <clipPath id="clip0_400_1890">
+      <rect width="50" height="50" fill="white"></rect>
+    </clipPath>
+  </defs>
+</svg>

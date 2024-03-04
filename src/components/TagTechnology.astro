@@ -1,0 +1,11 @@
+---
+import IconSVG from "./IconSVG.astro";
+const { tagData } = Astro.props;
+---
+
+<div class="w-32 md:w-36 p-2 border flex gap-2 items-center rounded bg-lgray-300 border-[#4c4c4c]">
+  <div>
+    <IconSVG iconData={[tagData]} />
+  </div>
+  <p class="text-white text-sm md:text-base">{tagData.label}</p>
+</div>

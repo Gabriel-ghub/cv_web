@@ -1,0 +1,43 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../layouts/Navbar.astro";
+import NavbarResponsive from "../layouts/NavbarResponsive.astro";
+import Header from "../layouts/Header.astro";
+import Experience from "../layouts/Experience.astro";
+import Technologies from "../layouts/Technologies.astro";
+import Education from "../layouts/Education.astro";
+import About from "../layouts/About.astro";
+import Contact from "../layouts/Contact.astro";
+---
+
+<Layout title="Gabriel Romero - Desarrollador Front-end">
+  <NavbarResponsive />
+  <main
+    class="max-w-[1100px] px-3 md-px-0 mx-auto flex flex-col gap-y-3 md:gap-y-12 mt-5 mb-12"
+  >
+    <Navbar />
+    <Header />
+    <Experience />
+    <Technologies />
+    <Education />
+    <About />
+    <Contact />
+  </main>
+</Layout>
+
+<style is:global>
+  /* :root {
+    --lime: #c0f25b;
+    --blue: #cabcdc;
+    --accent-gradient: linear-gradient(45deg, var(--lime), var(--blue));
+  } */
+  .text-gradient {
+    background-image: var(--accent-gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
+</style>

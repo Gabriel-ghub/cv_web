@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx
+    container_name: nginx-container
+    ports:
+      - "80:80"
+    volumes:
+      - ./dist:/usr/share/nginx/html
+      - ./nginx-config/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx-config/gabrielromero.conf:/etc/nginx/sites-available/
+      - /etc/nginx/sites-enabled/
+    networks:
+      - certbot-network
+
+  certbot:
+    image: certbot/certbot
+    container_name: certbot-container
+    command: certonly --webroot -w /usr/share/nginx/html -d gabrielromero.dev -d www.gabrielromero.dev --agree-tos --email romerogabriel.ad@gmail.com --non-interactive
+    volumes:
+      - ./dist:/usr/share/nginx/html
+      - ./nginx-config:/etc/letsencrypt
+    depends_on:
+      - nginx
+    networks:
+      - certbot-network
+
+networks:
+  certbot-network:

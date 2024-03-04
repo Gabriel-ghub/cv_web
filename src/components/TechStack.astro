@@ -1,0 +1,123 @@
+---
+import IconSVG from "./IconSVG.astro";
+import TagTechnology from "./TagTechnology.astro";
+
+const FRONTEND = [
+  {
+    name: "html",
+    label: "HTML5",
+    size: "35px",
+  },
+  {
+    name: "css",
+    label: "CSS3",
+    size: "35px",
+  },
+  {
+    name: "js",
+    label: "JavaScript",
+    size: "35px",
+  },
+  {
+    name: "react",
+    label: "React JS",
+    size: "35px",
+  },
+  {
+    name: "sass",
+    label: "Sass",
+    size: "35px",
+  },
+
+  {
+    name: "twind",
+    label: "Tailwind",
+    size: "35px",
+  },
+
+  {
+    name: "wp",
+    label: "WordPress",
+    size: "35px",
+  },
+];
+
+const BACKEND = [
+  {
+    name: "php",
+    label: "php",
+    size: "35px",
+  },
+  {
+    name: "node",
+    label: "Node JS",
+    size: "35px",
+  },
+  {
+    name: "mysql",
+    label: "MySQL",
+    size: "35px",
+  },
+  {
+    name: "docker",
+    label: "Docker",
+    size: "35px",
+  },
+];
+
+const OTROS = [
+  {
+    name: "git",
+    label: "Git",
+    size: "35px",
+  },
+  {
+    name: "ghub",
+    label: "Github",
+    size: "35px",
+  },
+  {
+    name: "figma",
+    label: "Figma",
+    size: "35px",
+  },
+  {
+    name: "gimp",
+    label: "Gimp",
+    size: "35px",
+  },
+];
+---
+
+<div class="rounded-lg overflow-hidden border border-[#4c4c4c]">
+  <h3 class="text-white text-xl font-bold bg-lgray-300 p-2">Front-end</h3>
+  <div class="flex gap-2 flex-wrap px-1 py-2 md:p-4 justify-center">
+    {
+      FRONTEND.map((tech) => {
+        return <TagTechnology tagData={tech} />;
+      })
+    }
+  </div>
+</div>
+<div class="flex flex-col md:flex-row gap-11 md:gap-3">
+  <div class="rounded-lg overflow-hidden border border-[#4c4c4c] w-full">
+    <h3 class="text-white text-xl font-bold bg-lgray-300 p-2">Back-end</h3>
+    <div class="flex gap-2 flex-wrap px-1 py-2 md:p-4 justify-center">
+      {
+        BACKEND.map((tech) => {
+          return <TagTechnology tagData={tech} />;
+        })
+      }
+    </div>
+  </div>
+  <div class="rounded-lg overflow-hidden border border-[#4c4c4c] w-full">
+    <h3 class="text-white text-xl font-bold bg-lgray-300 p-2">Otros</h3>
+    <div class="flex gap-2 flex-wrap px-1 py-2 md:p-4 justify-center">
+      {
+        OTROS.map((tech) => {
+          return <TagTechnology tagData={tech} />;
+        })
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+---
+import IconSVG from "../components/IconSVG.astro";
+import Section from "../components/Section.astro";
+
+const iconData = {
+  name: "linkedin",
+  size: "50px",
+};
+---
+
+<Section name="¿Hablamos?" id="contact">
+  <div class="flex flex-col items-center gap-8">
+    <p class="text-xl text-white text-center">
+      Si crees que puedo aportar algo especial a tu proyecto, ¡estaré encantado
+      de hablar contigo! <br /> Escríbeme y exploremos juntos las oportunidades de
+      colaboración.
+    </p>
+    <a
+      href="https://www.linkedin.com/in/gabriel-adrian-romero/"
+      target="_blank"
+    >
+      {(<IconSVG iconData={[iconData]} />)}
+    </a>
+  </div>
+</Section>
