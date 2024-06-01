@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         "lgray-300": "rgba(66,67,77,50%)",
+        lime: "#c0f25b",
       },
     },
   },
