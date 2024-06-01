@@ -24,12 +24,12 @@ jobs:
       - name: Build project
         run: npm run build # Cambia esto según tu comando de build
 
-        - name: deploy file to server
+      - name: deploy file to server
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-            username: '${{ secrets.HOSTINGER_USER }}'
-            server: '${{ secrets.HOSTINGER_IP }}'
-            ssh_private_key: ${{ secrets.HOSTINGER_PASS }}
-            local_path: './build/*'
-            remote_path: 'public_html'
-            sftpArgs: '-o ConnectTimeout=5'
+          username: "${{ secrets.HOSTINGER_USER }}"
+          server: "${{ secrets.HOSTINGER_IP }}"
+          ssh_private_key: ${{ secrets.HOSTINGER_PASS }}
+          local_path: "./build/*"
+          remote_path: "public_html"
+          sftpArgs: "-o ConnectTimeout=5"
