@@ -30,5 +30,6 @@ jobs:
           SSH_HOST: ${{ secrets.HOSTINGER_IP }}
           SSH_PORT: ${{ secrets.HOSTINGER_PORT }}
           TARGET_DIR: ${{ secrets.HOSTINGER_TARGET_DIR }}
-        run: |
-          scp -P $SSH_PORT -o StrictHostKeyChecking=no -r ./build/* $SSH_USER@$SSH_HOST:$TARGET_DIR
+          HOSTINGER_PASS: ${{ secrets.HOSTINGER_PASS }}
+      run: |
+        sshpass -p "$HOSTINGER_PASS" scp -P $SSH_PORT -o StrictHostKeyChecking=no -r ./build/* $SSH_USER@$SSH_HOST:$TARGET_DIR
