@@ -29,6 +29,7 @@ jobs:
         with:
           username: "${{ secrets.HOSTINGER_USER }}"
           server: "${{ secrets.HOSTINGER_IP }}"
+          port: ${{ secrets.HOSTINGER_PORT }}
           ssh_private_key: ${{ secrets.HOSTINGER_PASS }}
           local_path: "./build/*"
           remote_path: "public_html"
