@@ -24,15 +24,12 @@ jobs:
       - name: Build project
         run: npm run build # Cambia esto según tu comando de build
 
-      - name: Install sshpass
-        run: sudo apt-get install -y sshpass
-
-      - name: SSH and copy files
-        env:
-          SSH_USER: ${{ secrets.HOSTINGER_USER }}
-          SSH_HOST: ${{ secrets.HOSTINGER_IP }}
-          SSH_PORT: ${{ secrets.HOSTINGER_PORT }}
-          TARGET_DIR: ${{ secrets.HOSTINGER_TARGET_DIR }}
-          HOSTINGER_PASS: ${{ secrets.HOSTINGER_PASS }}
-      run: |
-        sshpass -p "$HOSTINGER_PASS" scp -P $SSH_PORT -o StrictHostKeyChecking=no -r ./build/* $SSH_USER@$SSH_HOST:$TARGET_DIR
+        - name: deploy file to server
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+            username: '${{ secrets.HOSTINGER_USER }}'
+            server: '${{ secrets.HOSTINGER_IP }}'
+            ssh_private_key: ${{ secrets.HOSTINGER_PASS }}
+            local_path: './build/*'
+            remote_path: 'public_html'
+            sftpArgs: '-o ConnectTimeout=5'
