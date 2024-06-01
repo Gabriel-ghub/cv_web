@@ -24,6 +24,9 @@ jobs:
       - name: Build project
         run: npm run build # Cambia esto según tu comando de build
 
+      - name: Install sshpass
+        run: sudo apt-get install -y sshpass
+
       - name: SSH and copy files
         env:
           SSH_USER: ${{ secrets.HOSTINGER_USER }}
