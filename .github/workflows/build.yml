@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Asegura que todas las ramas se descarguen
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
@@ -29,6 +31,6 @@ jobs:
         run: |
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
-          git checkout master
+          git checkout master || git checkout -b master # Asegura que la rama master esté presente
           git merge develop
           git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} master
