@@ -1,5 +1,7 @@
-.text-gradient {
-    background: "linear-gradient(90deg, #c0f25b, #cabcdc 100%)";
-    background-clip: text;
-    -webkit-background-clip: "text";
-}
+/* @font-face {
+    font-family: 'Inter';
+    src:
+        url('fonts/inter-regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+} */

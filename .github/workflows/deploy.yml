@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "21" # Cambia a la versión de Node.js que uses
+          node-version: "20" # Cambia a la versión de Node.js que uses
 
       - name: Install dependencies
         run: npm install
@@ -30,7 +30,7 @@ jobs:
           username: "${{ secrets.HOSTINGER_USER }}"
           server: "${{ secrets.HOSTINGER_IP }}"
           port: ${{ secrets.HOSTINGER_PORT }}
-          ssh_private_key: ${{ secrets.HOSTINGER_PASS }}
+          ssh_private_key: ${{ secrets.HOSTINGER_SECRET }}
           local_path: "./build/*"
-          remote_path: "public_html"
+          remote_path: "public_html/"
           sftpArgs: "-o ConnectTimeout=5"
