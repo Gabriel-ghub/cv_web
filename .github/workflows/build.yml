@@ -9,6 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    permissions: # Asegurar que el token tenga permisos de escritura
+      contents: write
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -33,4 +36,4 @@ jobs:
           git config --global user.email 'github-actions@github.com'
           git checkout master || git checkout -b master # Asegura que la rama master esté presente
           git merge develop
-          git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} master
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} master
