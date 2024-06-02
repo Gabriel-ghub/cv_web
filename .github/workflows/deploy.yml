@@ -1,4 +1,4 @@
-name: Generate a build and push to another branch
+name: Build and Deploy
 
 on:
   push:
@@ -8,22 +8,29 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Build and Push
-    steps:
-      - name: git-checkout
-        uses: actions/checkout@v3
 
-      - name: Install all dependencies
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20" # Cambia a la versión de Node.js que uses
+
+      - name: Install dependencies
         run: npm install
 
-      - name: Build
-        run: npm run build # The build command of your project
+      - name: Build project
+        run: npm run build # Cambia esto según tu comando de build
 
-      - name: Push
-        uses: s0/git-publish-subdir-action@develop
-        env:
-          REPO: self
-          BRANCH: build # The branch name where you want to push the assets
-          FOLDER: dist # The directory where your assets are generated
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_SECRET }} # GitHub will automatically add this - you don't need to bother getting a token
-          MESSAGE: "Build: ({sha}) {msg}" # The commit message
+      - name: deploy file to server
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+          username: "${{ secrets.HOSTINGER_USER }}"
+          server: "${{ secrets.HOSTINGER_IP }}"
+          port: ${{ secrets.HOSTINGER_PORT }}
+          ssh_private_key: ${{ secrets.OWN_SSH }}
+          local_path: "./build/*"
+          remote_path: "public_html/cv/"
+          sftpArgs: "-o ConnectTimeout=5"
