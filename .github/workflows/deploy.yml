@@ -32,5 +32,5 @@ jobs:
           port: ${{ secrets.HOSTINGER_PORT }}
           ssh_private_key: ${{ secrets.OWN_SSH }}
           local_path: "./dist/*"
-          remote_path: "/home/u795985401/domains/gabrielromero.es/public_html"
+          remote_path: ${{ secrets.HOSTINGER_TARGET_DIR }}
           sftpArgs: "-o ConnectTimeout=5"
