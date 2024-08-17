@@ -1,8 +1,27 @@
 ---
 import CardWork from "../components/CardWork.astro";
 import Section from "../components/Section.astro";
+
+const experience = [
+  {
+    position: "Desarrollador front-end",
+    company: "ADR Formación",
+    dates: "Marzo 2022 - Actualidad",
+    tasks: [
+      "Mantenimiento web.",
+      "Desarrollo responsive.",
+      "Soporte en SEO técnico.",
+      "Desarrollo web con React JS.",
+      "Soporte a back-end con PHP y MySQL.",
+    ],
+  },
+];
 ---
 
 <Section name="Experiencia laboral" id="experience">
-  <CardWork />
+  {
+    experience.map((exp) => {
+      return <CardWork experience={exp} />;
+    })
+  }
 </Section>
