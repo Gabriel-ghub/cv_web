@@ -1,5 +1,6 @@
 ---
 import IconSVG from "../components/IconSVG.astro";
+import { navItems } from "../data/data";
 ---
 
 <nav
@@ -17,22 +18,23 @@ import IconSVG from "../components/IconSVG.astro";
         <IconSVG iconData={[{ name: "close", size: "40px" }]} />
       </button>
     </div>
-    <a href="#index" class="text-lg font-semibold py-3 px-5 text-lime">Inicio</a
-    >
-    <a href="#experience" class="text-lg font-semibold py-3 px-5 text-lime"
-      >Experiencia</a
-    >
-    <a href="#technologies" class="text-lg font-semibold py-3 px-5 text-lime"
-      >Tecnologías</a
-    >
-    <a href="#education" class="text-lg font-semibold py-3 px-5 text-lime"
-      >Formación</a
-    >
-    <a href="#sobremi" class="text-lg font-semibold py-3 px-5 text-lime"
-      >Sobre mí</a
-    >
-    <a href="#contact" class="text-lg font-semibold py-3 px-5 text-lime"
-      >¿Hablamos?</a
-    >
+    {
+      navItems.map((item) => {
+        return (
+          <a
+            href={item.href}
+            target={item.href.startsWith("#") ? "_self" : "_blank"}
+            class="text-lg font-semibold py-3 px-5 text-lime flex items-center gap-2"
+          >
+            {item.text}
+            {item.icon && (
+              <div class="flex-shrink-0">
+                <IconSVG iconData={[{ name: "pdf", size: "" }]} />
+              </div>
+            )}
+          </a>
+        );
+      })
+    }
   </div>
 </nav>
