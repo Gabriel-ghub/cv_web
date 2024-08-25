@@ -3,27 +3,27 @@ import IconSVG from "../components/IconSVG.astro";
 import { navItems } from "../data/data";
 ---
 
-<nav
-  class="hidden rounded border bg-[#2b2b31] md:flex justify-around border-[#4c4c4c] sticky top-2 shadow-lg"
->
-  {
-    navItems.map((item) => {
-      return (
-        <a
-          href={item.href}
-          target={item.href.startsWith("#") ? "_self" : "_blank"}
-          class="text-lg font-semibold p-2 py-3 text-lime border-b border-transparent hover:border-lime transition-all flex items-center "
-        >
-          {item.text}
-          {item.icon && (
-            <div class="flex-shrink-0">
-              <IconSVG iconData={[{ name: "pdf", size: "20" }]} />
-            </div>
-          )}
-        </a>
-      );
-    })
-  }
+<nav class="hidden rounded bg-[#2b2b31] sticky top-0 md:block shadow-lg z-10">
+  <div class="max-w-[1100px] mx-auto md:flex justify-around">
+    {
+      navItems.map((item) => {
+        return (
+          <a
+            href={item.href}
+            target={item.href.startsWith("#") ? "_self" : "_blank"}
+            class="text-lg font-semibold p-2 py-4 text-lime border-b border-transparent hover:border-lime transition-all flex items-center "
+          >
+            {item.text}
+            {item.icon && (
+              <div class="flex-shrink-0">
+                <IconSVG iconData={[{ name: "pdf", size: "20" }]} />
+              </div>
+            )}
+          </a>
+        );
+      })
+    }
+  </div>
 </nav>
 
 <script>
