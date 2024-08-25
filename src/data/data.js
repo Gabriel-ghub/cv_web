@@ -19,10 +19,10 @@ export const navItems = [
     text: "¿Hablamos?",
     href: "#contact",
   },
-  {
-    text: "Blog",
-    href: "https://gabrielromero.dev/blog/",
-  },
+  // {
+  //   text: "Blog",
+  //   href: "https://gabrielromero.dev/blog/",
+  // },
   {
     text: "Currículum",
     href: "CV_Gabriel_Romero_desarrollador_ReactJS.pdf",
