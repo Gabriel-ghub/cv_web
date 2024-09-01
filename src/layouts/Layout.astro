@@ -99,4 +99,10 @@ const { title, metaDescription, frontmatter } = Astro.props;
   .post-content a {
     @apply text-blue-500 underline;
   }
+  .post-content :is(ul, ol, li) {
+    list-style: revert;
+    margin: revert;
+    padding: revert;
+    font-size: 18px;
+  }
 </style>

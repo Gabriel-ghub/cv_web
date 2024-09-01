@@ -12,9 +12,11 @@ url: "docker"
 icon: "docker"
 ---
 
-Vamos a definir el archivo docker-compose.yml que nos permitirá crear los contenedores.
+En este tutorial iniciaremos un proyecto de Laravel dentro de un contenedor de Docker, basándonos en las imagenes oficiales **bitnami**. Esto nos permitirá programar en nuestro HOST sin necesidad de tener instalado PHP, un servidor y la base de datos.
 
-En este ejemplo, utilizaremos la imagen de **bitnami** tanto de **Laravel** como de **MariaDB**, que nos provee el entorno de desarrollo completo.
+Comenzamos definiendo el archivo docker-compose.yml que nos permitirá crear los contenedores.
+
+Como mencioné anteriormente, utilizaremos las imágenes oficiles de **bitnami** de **Laravel** y **MariaDB**.
 
 Nuestro archivo **docker-compose.yml** debe verse así:
 
@@ -58,11 +60,13 @@ volumes:
   db-data:
 ```
 
-Esto nos creará los contenedores, asignará puertos, la red "laravel-network" y asignará el volumen a la base de datos para su persistencia.
+Esto:
 
-También montará un volumen en la carpeta **my-project** de nustro ordenador (HOST) para que podamos realizar los cambios en local y que sea reflejados en el contenedor.
+1.  Creará los contenedores
+2.  Asignará puertos, la red "laravel-network" y el volumen a la base de datos para su persistencia.
+3.  Montará un volumen en la carpeta **my-project** de nuestro ordenador (HOST) para que podamos realizar los cambios en local y que sean reflejados en el contenedor.
 
-Podemos ver las variables de entorno disponible para cada imagen en <a href="https://hub.docker.com/search?q=laravel" target="_blank">Docker hub</a>
+Podemos ver las variables de entorno disponibles para cada imagen en <a href="https://hub.docker.com/search?q=laravel" target="_blank">Docker Hub</a>.
 
 En nuestra terminal ejecutamos:
 
@@ -72,4 +76,45 @@ docker compose up -d
 
 Y tendremos nuestros contenedores corriendo. Accediendo a localhost:8000 (escogí este puerto, pero puede ser otro), veremos el proyecto de Laravel.
 
-Se pueden seguir los mismos pasos y para crear diferentes contenedores, solo debemos revisar la documentación de los mismos para configurar las variables correspondientes a cada uno.
+<img
+  width="1230"
+  height="300"
+  src="/posts/images/laravel_project.jpg"
+  alt="Imagen de proyecto de Laravel en contenedor de Docker"
+/>
+<br />
+
+En nuestro HOST, en la carpeta my-project (o el nombre que le hayamos puesto),
+veremos los archivos del proyecto. Esto se debe a que montamos el volumen.
+
+## **¿Quieres utilizar Laravel como API?**
+
+La imagen de Laravel que utilizamos no está configurada para utilizarla como API REST; si queremos hacer uso de ella, debemos habilitarla.
+
+Para ello ejecutamos el comando:
+
+```
+docker exec nombre_contenedor php artisan install:api
+```
+
+Esto nos creará el archivo **api** y realizará las configuraciones necesarias para comenzar a trabajar con ella.
+
+<div class="flex flex-wrap gap-3">
+  <img
+    width="390"
+    height="230"
+    src="/posts/images/estructura_carpetas_1.jpg"
+    alt="Estructura de carpetas de un proyecto de Laravel"
+  />
+  <img
+    width="390"
+    height="230"
+    src="/posts/images/estructura_carpetas_2.jpg"
+    alt="Estructura de carpetas de un proyecto de Laravel"
+  />
+</div>
+<br />
+
+Recomiendo verificar el usuario/grupo y los permisos del archivo **api.php** y ajustarlos según corresponda, ya que de esto depende que podamos editarlo.
+
+Sólo queda crear las rutas y comenzar a programar nuestra API REST.
