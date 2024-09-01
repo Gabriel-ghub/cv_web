@@ -1,23 +1,11 @@
 export const navItems = [
   {
-    text: "Experiencia",
-    href: "#experience",
-  },
-  {
-    text: "Tecnologías",
-    href: "#technologies",
-  },
-  {
-    text: "Formación",
-    href: "#education",
-  },
-  {
     text: "Sobre mí",
-    href: "#aboutme",
+    href: "/",
   },
   {
-    text: "¿Hablamos?",
-    href: "#contact",
+    text: "Blog",
+    href: "/blog",
   },
   {
     text: "Currículum",
