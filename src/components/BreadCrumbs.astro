@@ -11,7 +11,7 @@ const { links } = Astro.props;
       <>
         <a
           class="text-lime"
-          href={`${index > 0 ? links[index - 1].url : ""}${link.url}`}
+          href={`${link.indent && index > 0 ? links[index - 1].url : ""}${link.url}`}
         >
           {link.page}
         </a>

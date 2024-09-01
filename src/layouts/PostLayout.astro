@@ -16,7 +16,10 @@ const { title, metaDescription } = frontmatter;
       ]}
     />
   </Fragment>
+  <Fragment slot="center-title">{title}</Fragment>
   <Fragment slot="center">
-    <slot />
+    <div class="post-content">
+      <slot />
+    </div>
   </Fragment>
 </BlogLayout>

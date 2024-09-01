@@ -11,6 +11,7 @@ export const navItems = [
     text: "Currículum",
     href: "CV_Gabriel_Romero_desarrollador_ReactJS.pdf",
     icon: "pdf",
+    newTab: true,
   },
 ];
 
@@ -39,5 +40,10 @@ export const languages = [
     name: "javascript",
     description:
       "Javascript, ese lenguaje pensando para dotar de interactividad a las páginas web que ha ido evolucionando hasta su uso en servidores. El primer lenguaje de programación de muchos.",
+  },
+  {
+    name: "docker",
+    description:
+      "Cuando descubrí Docker quedé sorprendido por las posibilidades que nos ofrece.",
   },
 ];

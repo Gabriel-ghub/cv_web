@@ -1,4 +1,5 @@
 ---
+import BreadCrumbs from "../../components/BreadCrumbs.astro";
 import IconSVG from "../../components/IconSVG.astro";
 import BlogLayout from "../../layouts/BlogLayout.astro";
 const allPosts = await Astro.glob("../posts/*.mdx");
@@ -28,21 +29,37 @@ const uniqueTags = allPosts.reduce((acc, current, index) => {
   title="Blog sobre Desarrollo web"
   metaDescription="Blog sobre Desarrollo web"
 >
+  <Fragment slot="breadcrumbs">
+    <BreadCrumbs
+      links={[
+        {
+          page: "Inicio",
+          url: "/blog",
+        },
+        {
+          page: "Tags",
+          url: "/tags",
+          current: true,
+        },
+      ]}
+    />
+  </Fragment>
+  <Fragment slot="center-title">Explora los posts por categoría</Fragment>
+
   <Fragment slot="center">
     <div class="flex flex-col gap-y-8">
       <div>
-        <h1 class="text-4xl font-semibold">
-          Aquí encontraras todas la caterogía disponibles
-        </h1>
         <p>
-          Soy un apasionado de la programación, y siempre estoy explorando
-          nuevos lenguajes, frameworks e implementaciones. Me gusta averiguar
-          cómo hacer "X" cosa en React JS, Laravel, Javascript, y un largo
-          etcétera.
+          Aquí encontrarás todos los lenguajes, frameworks y herramientas con
+          los que he tenido mis batallas.
+        </p>
+        <p>
+          Sí, sí, lo sé, por ahora son pocas... ¡pero créeme, no son todas! Iré
+          agregando más poco a poco.
         </p>
       </div>
       <div>
-        <h2 class="text-3xl">Ultimos Post</h2>
+        <h2 class="text-3xl"></h2>
         <div>
           <ul class="flex">
             {
@@ -66,4 +83,6 @@ const uniqueTags = allPosts.reduce((acc, current, index) => {
       </div>
     </div>
   </Fragment>
+
+  <Fragment slot="sidebar"></Fragment>
 </BlogLayout>

@@ -1,0 +1,75 @@
+---
+layout: ../../layouts/PostLayout.astro
+title: Crear contenedor de Docker con Laravel y MySQL - MariaDB
+author: Astro Learner
+metaDescription: "Proyecto de Laravel en contenedor de Docker con conexión a base de datos MariaDB"
+image:
+  url: "https://docs.astro.build/default-og-image.png"
+  alt: "The word astro against an illustration of planets and stars."
+pubDate: 10-08-2022
+tags: ["docker"]
+url: "docker"
+icon: "docker"
+---
+
+Vamos a definir el archivo docker-compose.yml que nos permitirá crear los contenedores.
+
+En este ejemplo, utilizaremos la imagen de **bitnami** tanto de **Laravel** como de **MariaDB**, que nos provee el entorno de desarrollo completo.
+
+Nuestro archivo **docker-compose.yml** debe verse así:
+
+```yml
+services:
+  app:
+    image: bitnami/laravel
+    container_name: laravel
+    environment:
+      - DB_HOST=mariadb
+      - DB_PORT=3306
+      - DB_USERNAME=bn_myapp
+      - DB_DATABASE=bitnami_myapp
+    volumes:
+      - ./my-project:/app
+    ports:
+      - 8000:8000
+    networks:
+      - laravel-network
+    depends_on:
+      - db
+
+  db:
+    image: bitnami/mariadb
+    container_name: mariadb
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_USER=bn_myapp
+      - MARIADB_DATABASE=bitnami_myapp
+    volumes:
+      - db-data:/bitnami/mariadb
+    ports:
+      - "3306:3306"
+    networks:
+      - laravel-network
+
+networks:
+  laravel-network:
+
+volumes:
+  db-data:
+```
+
+Esto nos creará los contenedores, asignará puertos, la red "laravel-network" y asignará el volumen a la base de datos para su persistencia.
+
+También montará un volumen en la carpeta **my-project** de nustro ordenador (HOST) para que podamos realizar los cambios en local y que sea reflejados en el contenedor.
+
+Podemos ver las variables de entorno disponible para cada imagen en <a href="https://hub.docker.com/search?q=laravel" target="_blank">Docker hub</a>
+
+En nuestra terminal ejecutamos:
+
+```
+docker compose up -d
+```
+
+Y tendremos nuestros contenedores corriendo. Accediendo a localhost:8000 (escogí este puerto, pero puede ser otro), veremos el proyecto de Laravel.
+
+Se pueden seguir los mismos pasos y para crear diferentes contenedores, solo debemos revisar la documentación de los mismos para configurar las variables correspondientes a cada uno.

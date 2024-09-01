@@ -10,7 +10,7 @@ import { navItems } from "../data/data";
         return (
           <a
             href={item.href}
-            target={item.href.startsWith("#") ? "_self" : "_blank"}
+            target={item.newTab ? "_blank" : "_self"}
             class="text-lg font-semibold p-2 py-4 text-lime border-b border-transparent hover:border-lime transition-all flex items-center "
           >
             {item.text}

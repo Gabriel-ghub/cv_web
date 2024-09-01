@@ -1,4 +1,5 @@
 ---
+import { custom } from "astro:schema";
 import BreadCrumbs from "../components/BreadCrumbs.astro";
 import IconSVG from "../components/IconSVG.astro";
 import Layout from "./Layout.astro";
@@ -34,37 +35,49 @@ const { title, metaDescription } = Astro.props;
           {
             page: "Inicio",
             url: "/blog",
+            current: true,
           },
         ]}
       />
     </slot>
   </div>
-  <main class="flex justify-center pt-10">
+  <main class="flex justify-center pt-5 lg:pt-10">
     <div class="w-full max-w-[1100px] main-grid relative">
       <section class="main-grid--center">
-        <slot name="center" />
+        <div class="flex flex-col gap-y-10">
+          <div>
+            <h1 class="text-4xl font-semibold">
+              <slot name="center-title" />
+            </h1>
+          </div>
+          <div>
+            <slot name="center" />
+          </div>
+        </div>
       </section>
       <aside class="main-grid--sidebar">
         <div class="sticky top-16">
-          <h3 class="font-semibold">Categorías</h3>
-          <ul class="flex">
-            {
-              uniqueTags.map((tag) => {
-                return (
-                  <li>
-                    <a
-                      class="font-semibold capitalize underline
+          <slot name="sidebar">
+            <h2 class="font-semibold text-2xl">Categorías</h2>
+            <ul class="flex">
+              {
+                uniqueTags.map((tag) => {
+                  return (
+                    <li>
+                      <a
+                        class="font-semibold capitalize underline
                       flex gap-2 border hover:border-lime transition-all rounded items-center py-1 px-3"
-                      href={`/tags/${tag.url.toLowerCase()}`}
-                    >
-                      <IconSVG iconData={[{ name: tag.icon, size: "20" }]} />
-                      {tag.url}
-                    </a>
-                  </li>
-                );
-              })
-            }
-          </ul>
+                        href={`/tags/${tag.url.toLowerCase()}`}
+                      >
+                        <IconSVG iconData={[{ name: tag.icon, size: "20" }]} />
+                        {tag.url}
+                      </a>
+                    </li>
+                  );
+                })
+              }
+            </ul>
+          </slot>
         </div>
       </aside>
     </div>

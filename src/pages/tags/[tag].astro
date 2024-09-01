@@ -20,6 +20,9 @@ export async function getStaticPaths() {
 }
 const { tag } = Astro.params;
 const { posts } = Astro.props;
+const postSorted = posts.toSorted((a, b) => {
+  return parseDate(b.frontmatter.pubDate) - parseDate(a.frontmatter.pubDate);
+});
 ---
 
 <BlogLayout
@@ -30,8 +33,13 @@ const { posts } = Astro.props;
     <BreadCrumbs
       links={[
         {
-          page: "tags",
+          page: "Inicio",
+          url: "/blog",
+        },
+        {
+          page: "Tags",
           url: "/tags",
+          indent: false,
         },
         {
           page: tag,
@@ -41,18 +49,20 @@ const { posts } = Astro.props;
       ]}
     />
   </Fragment>
+  <Fragment slot="center-title">
+    Post sobre <span class="font-semibold capitalize">{tag}</span>
+  </Fragment>
   <Fragment slot="center">
-    <h1>Post sobre <span class="font-semibold capitalize">{tag}</span></h1>
     <p class="">{languages.find((lang) => lang.name === tag).description}</p>
     <div>
       <ul class="flex flex-col gap-y-6">
         {
-          posts.map((post) => (
+          postSorted.map((post) => (
             <li>
               <PostCard
                 url={post.url}
                 title={post.frontmatter.title}
-                date="20-20-24"
+                date={post.frontmatter.pubDate}
                 lastModified=""
               />
             </li>
