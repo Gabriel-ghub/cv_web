@@ -1,7 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Navbar from "../layouts/Navbar.astro";
-import NavbarResponsive from "../layouts/NavbarResponsive.astro";
 import Header from "../layouts/Header.astro";
 import Experience from "../layouts/Experience.astro";
 import Technologies from "../layouts/Technologies.astro";
@@ -10,11 +8,12 @@ import About from "../layouts/About.astro";
 import Contact from "../layouts/Contact.astro";
 ---
 
-<Layout title="Gabriel Romero - Desarrollador Front-end">
-  <NavbarResponsive />
-  <Navbar />
+<Layout
+  title="Gabriel Romero - Desarrollador Front-end"
+  metaDescription="Blog sobre Desarrollo web"
+>
   <main
-    class="max-w-[1100px] px-3 md-px-0 mx-auto flex flex-col gap-y-3 md:gap-y-12 mt-5 mb-12"
+    class="max-w-[1100px] px-3 md-px-0 mx-auto flex flex-col gap-y-3 md:gap-y-12 mb-12"
   >
     <Header />
     <Experience />
@@ -67,4 +66,3 @@ import Contact from "../layouts/Contact.astro";
     document.documentElement.scrollTop = 0;
   }
 </script>
-<style is:global></style>

@@ -1,0 +1,69 @@
+---
+import IconSVG from "../../components/IconSVG.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
+const allPosts = await Astro.glob("../posts/*.mdx");
+const uniqueTags = allPosts.reduce((acc, current, index) => {
+  if (index === 0) {
+    return [
+      {
+        url: current.frontmatter.url,
+        icon: current.frontmatter.icon,
+      },
+    ];
+  }
+  if (acc[acc.length - 1].url === current.frontmatter.url) {
+    return acc;
+  }
+  return [
+    ...acc,
+    {
+      url: current.frontmatter.url,
+      icon: current.frontmatter.icon,
+    },
+  ];
+}, []);
+---
+
+<BlogLayout
+  title="Blog sobre Desarrollo web"
+  metaDescription="Blog sobre Desarrollo web"
+>
+  <Fragment slot="center">
+    <div class="flex flex-col gap-y-8">
+      <div>
+        <h1 class="text-4xl font-semibold">
+          Aquí encontraras todas la caterogía disponibles
+        </h1>
+        <p>
+          Soy un apasionado de la programación, y siempre estoy explorando
+          nuevos lenguajes, frameworks e implementaciones. Me gusta averiguar
+          cómo hacer "X" cosa en React JS, Laravel, Javascript, y un largo
+          etcétera.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-3xl">Ultimos Post</h2>
+        <div>
+          <ul class="flex">
+            {
+              uniqueTags.map((tag) => {
+                return (
+                  <li>
+                    <a
+                      class="font-semibold capitalize underline
+                      flex gap-2 border hover:border-lime transition-all rounded items-center py-1 px-3"
+                      href={`/tags/${tag.url.toLowerCase()}`}
+                    >
+                      <IconSVG iconData={[{ name: tag.icon, size: "20" }]} />
+                      {tag.url}
+                    </a>
+                  </li>
+                );
+              })
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </Fragment>
+</BlogLayout>

@@ -1,0 +1,24 @@
+---
+const { links } = Astro.props;
+---
+
+{
+  links.map((link, index) => {
+    if (link.current === true) {
+      return <span class="text-lime">{link.page}</span>;
+    }
+    return (
+      <>
+        <a
+          class="text-lime"
+          href={`${index > 0 ? links[index - 1].url : ""}${link.url}`}
+        >
+          {link.page}
+        </a>
+        <span class="text-lime">
+          {links.length === index - 1 || links.length === 1 ? "" : " > "}
+        </span>
+      </>
+    );
+  })
+}

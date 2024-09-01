@@ -1,0 +1,10 @@
+---
+const { title, date, url } = Astro.props;
+---
+
+<a class="flex border border-[#4c4c4c] rounded p-3" href={url || "#"}>
+  <div class="flex flex-col">
+    <span class="text-sm">{date}</span>
+    <p class="mb-0">{title || ""}</p>
+  </div>
+</a>

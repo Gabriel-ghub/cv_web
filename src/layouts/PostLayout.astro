@@ -1,0 +1,22 @@
+---
+import BreadCrumbs from "../components/BreadCrumbs.astro";
+import BlogLayout from "./BlogLayout.astro";
+const { frontmatter } = Astro.props;
+const { title, metaDescription } = frontmatter;
+---
+
+<BlogLayout title={title} metaDescription={metaDescription}>
+  <Fragment slot="breadcrumbs">
+    <BreadCrumbs
+      links={[
+        {
+          page: "Inicio",
+          url: "/blog",
+        },
+      ]}
+    />
+  </Fragment>
+  <Fragment slot="center">
+    <slot />
+  </Fragment>
+</BlogLayout>

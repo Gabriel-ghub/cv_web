@@ -1,0 +1,99 @@
+---
+import BreadCrumbs from "../components/BreadCrumbs.astro";
+import IconSVG from "../components/IconSVG.astro";
+import Layout from "./Layout.astro";
+const allPosts = await Astro.glob("../pages/posts/*.mdx");
+const uniqueTags = allPosts.reduce((acc, current, index) => {
+  if (index === 0) {
+    return [
+      {
+        url: current.frontmatter.url,
+        icon: current.frontmatter.icon,
+      },
+    ];
+  }
+  if (acc[acc.length - 1].url === current.frontmatter.url) {
+    return acc;
+  }
+  return [
+    ...acc,
+    {
+      url: current.frontmatter.url,
+      icon: current.frontmatter.icon,
+    },
+  ];
+}, []);
+const { title, metaDescription } = Astro.props;
+---
+
+<Layout title={title} metaDescription={metaDescription}>
+  <div class="max-w-[1100px] mx-auto p-3 border-b border-gray-400">
+    <slot name="breadcrumbs">
+      <BreadCrumbs
+        links={[
+          {
+            page: "Inicio",
+            url: "/blog",
+          },
+        ]}
+      />
+    </slot>
+  </div>
+  <main class="flex justify-center pt-10">
+    <div class="w-full max-w-[1100px] main-grid relative">
+      <section class="main-grid--center">
+        <slot name="center" />
+      </section>
+      <aside class="main-grid--sidebar">
+        <div class="sticky top-16">
+          <h3 class="font-semibold">Categorías</h3>
+          <ul class="flex">
+            {
+              uniqueTags.map((tag) => {
+                return (
+                  <li>
+                    <a
+                      class="font-semibold capitalize underline
+                      flex gap-2 border hover:border-lime transition-all rounded items-center py-1 px-3"
+                      href={`/tags/${tag.url.toLowerCase()}`}
+                    >
+                      <IconSVG iconData={[{ name: tag.icon, size: "20" }]} />
+                      {tag.url}
+                    </a>
+                  </li>
+                );
+              })
+            }
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .main-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "center"
+      "sidebar";
+    padding: 10px;
+    gap: 50px;
+  }
+
+  @media screen and (min-width: 1300px) {
+    .main-grid {
+      grid-template-columns: auto 150px;
+      grid-template-areas: "center sidebar";
+    }
+  }
+
+  .main-grid--center {
+    grid-area: center;
+  }
+
+  .main-grid--sidebar {
+    grid-area: sidebar;
+  }
+</style>

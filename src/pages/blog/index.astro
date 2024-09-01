@@ -1,0 +1,82 @@
+---
+import PostCard from "../../components/PostCard.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
+const allPosts = await Astro.glob("../posts/*.mdx");
+---
+
+<BlogLayout
+  title="Blog sobre Desarrollo web"
+  metaDescription="Blog sobre Desarrollo web"
+>
+  <Fragment slot="center">
+    <div class="flex flex-col gap-y-8">
+      <div>
+        <h1 class="text-4xl font-semibold">
+          ¡Bienvenido a mi Blog de Desarrollo Web!
+        </h1>
+
+        <p>
+          Más que un blog, este espacio es un repositorio de <span
+            class="font-semibold underline">"¿cómo se hacía?"</span
+          >.
+        </p>
+
+        <p>
+          Soy un apasionado de la programación, y siempre estoy explorando
+          nuevos lenguajes, frameworks e implementaciones. Me gusta averiguar
+          cómo hacer "X" cosa en React JS, Laravel, Javascript, y un largo
+          etcétera.
+        </p>
+
+        <p>
+          A menudo me encuentro experimentando con tecnologías que no uso en mi
+          día a día, como Docker.
+        </p>
+
+        <p>
+          Por ejemplo, llego del trabajo, decido probar una implementación en
+          Docker, lo investigo, reviso la documentación y, después de un tiempo,
+          tengo un contenedor corriendo con Laravel, MySQL, creado con
+          Docker-compose. Todo funciona de maravilla.
+        </p>
+
+        <p>
+          Sin embargo, después de un tiempo sin usarlo, cuando vuelvo a
+          necesitarlo, me hago la misma pregunta: "¿Cómo se hacía?". Ahí es
+          cuando me doy cuenta de que no lo recuerdo, y tengo que pasar por el
+          mismo proceso de búsqueda, estudio y enfrentamiento con los errores
+          que ya había resuelto.
+        </p>
+        <p>
+          Para evitar repetir ese ciclo, me he comprometido a documentar todo lo
+          que aprendo y a guardarlo aquí, en este espacio accesible para todos.
+        </p>
+
+        <p>
+          Quizás algún día esto pueda servir a alguién. <span
+            class="font-semibold italic">Me gusta pensar que sí</span
+          >.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-3xl">Ultimos Post</h2>
+        <div>
+          <ul class="flex flex-col gap-y-6">
+            {
+              allPosts.map((post) => (
+                <li>
+                  <PostCard
+                    url={post.url}
+                    title={post.frontmatter.title}
+                    date="20-20-24"
+                    lastModified=""
+                  />
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </Fragment>
+</BlogLayout>

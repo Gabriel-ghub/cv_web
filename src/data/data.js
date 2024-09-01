@@ -45,3 +45,11 @@ export const experience = [
     ],
   },
 ];
+
+export const languages = [
+  {
+    name: "javascript",
+    description:
+      "Javascript, ese lenguaje pensando para dotar de interactividad a las páginas web que ha ido evolucionando hasta su uso en servidores. El primer lenguaje de programación de muchos.",
+  },
+];

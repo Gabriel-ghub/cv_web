@@ -1,0 +1,64 @@
+---
+import PostCard from "../../components/PostCard.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
+import { languages } from "../../data/data";
+import BreadCrumbs from "../../components/BreadCrumbs.astro";
+export async function getStaticPaths() {
+  const allPosts = await Astro.glob("../posts/*.mdx");
+
+  const uniqueTags = [...new Set(allPosts.map((post) => post.frontmatter.url))];
+
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post) =>
+      post.frontmatter.tags.includes(tag)
+    );
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
+}
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<BlogLayout
+  title="Blog sobre Desarrollo web"
+  metaDescription=`Blog sobre Desarrollo web, articulos sobre ${tag}`
+>
+  <Fragment slot="breadcrumbs">
+    <BreadCrumbs
+      links={[
+        {
+          page: "tags",
+          url: "/tags",
+        },
+        {
+          page: tag,
+          url: tag,
+          current: true,
+        },
+      ]}
+    />
+  </Fragment>
+  <Fragment slot="center">
+    <h1>Post sobre <span class="font-semibold capitalize">{tag}</span></h1>
+    <p class="">{languages.find((lang) => lang.name === tag).description}</p>
+    <div>
+      <ul class="flex flex-col gap-y-6">
+        {
+          posts.map((post) => (
+            <li>
+              <PostCard
+                url={post.url}
+                title={post.frontmatter.title}
+                date="20-20-24"
+                lastModified=""
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </Fragment>
+</BlogLayout>
