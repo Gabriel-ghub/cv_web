@@ -9,7 +9,7 @@ export const navItems = [
   },
   {
     text: "Currículum",
-    href: "CV_Gabriel_Romero_desarrollador_ReactJS.pdf",
+    href: "/CV_Gabriel_Romero_desarrollador_ReactJS.pdf",
     icon: "pdf",
     newTab: true,
   },

@@ -63,10 +63,15 @@ const { title, metaDescription, frontmatter } = Astro.props;
     color: white;
   }
 
-  .main-grid :is(p, h1, h2, h3) {
+  .main-grid
+    :is(p, h1, h2, h3):not(
+      .post-list-container p,
+      .post-list-container h1,
+      .post-list-container h2,
+      .post-list-container h3
+    ) {
     @apply mb-3;
   }
-
   p {
     @apply text-lg;
   }

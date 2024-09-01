@@ -2,9 +2,29 @@
 const { title, date, url } = Astro.props;
 ---
 
-<a class="flex border border-[#4c4c4c] rounded p-3" href={url || "#"}>
+<a
+  class="flex border bg-lgray-300 border-[#4c4c4c] hover:border-lime transition-all rounded p-3 justify-between items-top"
+  href={url || "#"}
+>
   <div class="flex flex-col">
     <span class="text-sm">{date}</span>
     <p class="mb-0">{title || ""}</p>
+  </div>
+  <div class="flex-shrink-0">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-right"
+      ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+        d="M5 12l14 0"></path><path d="M15 16l4 -4"></path><path d="M15 8l4 4"
+      ></path></svg
+    >
   </div>
 </a>
