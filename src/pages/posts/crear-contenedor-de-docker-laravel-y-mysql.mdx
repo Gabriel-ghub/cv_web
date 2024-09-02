@@ -12,11 +12,11 @@ url: "docker"
 icon: "docker"
 ---
 
-En este tutorial iniciaremos un proyecto de Laravel dentro de un contenedor de Docker, basándonos en las imagenes oficiales **bitnami**. Esto nos permitirá programar en nuestro HOST sin necesidad de tener instalado PHP, un servidor y la base de datos.
+En este tutorial iniciaremos un proyecto de Laravel dentro de un contenedor de Docker. Esto nos permitirá programar en nuestro HOST sin necesidad de tener instalado PHP, un servidor y la base de datos.
 
 Comenzamos definiendo el archivo docker-compose.yml que nos permitirá crear los contenedores.
 
-Como mencioné anteriormente, utilizaremos las imágenes oficiles de **bitnami** de **Laravel** y **MariaDB**.
+Utilizaremos las imágenes de **Laravel** y **MariaDB** oficiles de **bitnami**.
 
 Nuestro archivo **docker-compose.yml** debe verse así:
 
@@ -62,9 +62,10 @@ volumes:
 
 Esto:
 
-1.  Creará los contenedores
-2.  Asignará puertos, la red "laravel-network" y el volumen a la base de datos para su persistencia.
-3.  Montará un volumen en la carpeta **my-project** de nuestro ordenador (HOST) para que podamos realizar los cambios en local y que sean reflejados en el contenedor.
+1.  Creará los contenedores.
+2.  Asignará puertos, la red "laravel-network".
+3.  Montará el volumen a la base de datos para su persistencia.
+4.  Montará un volumen en la carpeta **my-project** de nuestro ordenador (HOST) para que podamos realizar los cambios en local y que sean reflejados en el contenedor.
 
 Podemos ver las variables de entorno disponibles para cada imagen en <a href="https://hub.docker.com/search?q=laravel" target="_blank">Docker Hub</a>.
 

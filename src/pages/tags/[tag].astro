@@ -53,7 +53,15 @@ const postSorted = posts.toSorted((a, b) => {
     Post sobre <span class="font-semibold capitalize">{tag}</span>
   </Fragment>
   <Fragment slot="center">
-    <p class="">{languages.find((lang) => lang.name === tag).description}</p>
+    <div class="mb-10 blog-content">
+      {
+        languages
+          .find((lang) => lang.name === tag)
+          .description.map((paragraph) => {
+            return <p>{paragraph}</p>;
+          })
+      }
+    </div>
     <div>
       <ul class="flex flex-col gap-y-6">
         {

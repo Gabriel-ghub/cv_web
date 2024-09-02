@@ -12,9 +12,10 @@ interface Props {
   frontmatter: Frontmatter;
   title: string;
   metaDescription: string;
+  path: string;
 }
 
-const { title, metaDescription, frontmatter } = Astro.props;
+const { title, metaDescription, frontmatter, path } = Astro.props;
 ---
 
 <!doctype html>
@@ -29,8 +30,8 @@ const { title, metaDescription, frontmatter } = Astro.props;
   </head>
   <body class="min-h-screen flex flex-col">
     <div class="flex-grow">
-      <NavbarResponsive />
-      <Navbar />
+      <NavbarResponsive path={path} />
+      <Navbar path={path} />
       <slot />
     </div>
     <Footer />
@@ -68,7 +69,8 @@ const { title, metaDescription, frontmatter } = Astro.props;
       .post-list-container p,
       .post-list-container h1,
       .post-list-container h2,
-      .post-list-container h3
+      .post-list-container h3,
+
     ) {
     @apply mb-3;
   }
@@ -96,13 +98,17 @@ const { title, metaDescription, frontmatter } = Astro.props;
     margin-bottom: 20px;
   }
 
-  .post-content a {
-    @apply text-blue-500 underline;
+  .blog-content :is(p, h1, h2, h3) {
+    margin: revert;
   }
-  .post-content :is(ul, ol, li) {
+
+  .post-content :is(ul, ol, li, p, h1, h2, h3) {
     list-style: revert;
     margin: revert;
     padding: revert;
     font-size: 18px;
+  }
+  .post-content a {
+    @apply text-blue-500 underline;
   }
 </style>

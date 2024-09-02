@@ -13,6 +13,11 @@ const { title, metaDescription } = frontmatter;
           page: "Inicio",
           url: "/blog",
         },
+        {
+          page: `${title}`,
+          url: `/${title}`,
+          current: true,
+        },
       ]}
     />
   </Fragment>

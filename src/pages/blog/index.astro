@@ -18,12 +18,24 @@ const postSorted = allPosts.toSorted((a, b) => {
   </Fragment>
   <Fragment slot="center">
     <div class="flex flex-col gap-y-8">
-      <div>
+      <div class="blog-content">
         <p>
-          Cuando programo, en ocasiones no recuerdo cómo hice algún desarrollo.
-          Y cuando necesito volver a hacerlo, siempre me pregunto: "<i
-            >¿Cómo fue que lo hice?</i
-          >".
+          Cuando programo o exploro algún framework o herramienta que no utilizo
+          habitualmente, me enfrento a nuevos desafíos.
+        </p>
+
+        <p>
+          Investigo, pruebo, aprendo y supero. Pero, pasado un tiempo, cuando
+          quiero o necesito volver a hacerlo, me encuentro con las típicas
+          preguntas: <span class="font-semibold italic"
+            >"¿Cómo fue que lo hice?"</span
+          >, <span class="font-semibold italic">
+            "¿Cómo funcionaba esto?"</span
+          >.
+        </p>
+
+        <p>
+          Vamos, que si estás en el mundo de la programación, me entenderás.
         </p>
 
         <p>
@@ -38,7 +50,7 @@ const postSorted = allPosts.toSorted((a, b) => {
         </p>
       </div>
       <div>
-        <h2 class="text-3xl">Últimos Post</h2>
+        <h2 class="text-3xl mb-2">Últimos Post</h2>
         <div class="post-list-container">
           <ul class="flex flex-col gap-y-6">
             {

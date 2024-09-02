@@ -27,7 +27,7 @@ const uniqueTags = allPosts.reduce((acc, current, index) => {
 const { title, metaDescription } = Astro.props;
 ---
 
-<Layout title={title} metaDescription={metaDescription}>
+<Layout title={title} metaDescription={metaDescription} path="blog">
   <div class="max-w-[1100px] mx-auto p-3 border-b border-gray-400">
     <slot name="breadcrumbs">
       <BreadCrumbs
@@ -58,7 +58,7 @@ const { title, metaDescription } = Astro.props;
       <aside class="main-grid--sidebar">
         <div class="sticky top-16">
           <slot name="sidebar">
-            <h2 class="font-semibold text-2xl">Categorías</h2>
+            <h2 class="font-semibold text-2xl mb-2">Categorías</h2>
             <ul class="flex">
               {
                 uniqueTags.map((tag) => {

@@ -7,12 +7,12 @@ export const navItems = [
     text: "Blog",
     href: "/blog",
   },
-  {
-    text: "Currículum",
-    href: "/CV_Gabriel_Romero_desarrollador_ReactJS.pdf",
-    icon: "pdf",
-    newTab: true,
-  },
+  // {
+  //   text: "Currículum",
+  //   href: "/CV_Gabriel_Romero_desarrollador_ReactJS.pdf",
+  //   icon: "pdf",
+  //   newTab: true,
+  // },
 ];
 
 // {
@@ -38,12 +38,17 @@ export const experience = [
 export const languages = [
   {
     name: "javascript",
-    description:
+    description: [
       "Javascript, ese lenguaje pensando para dotar de interactividad a las páginas web que ha ido evolucionando hasta su uso en servidores. El primer lenguaje de programación de muchos.",
+    ],
   },
   {
     name: "docker",
-    description:
-      "Cuando descubrí Docker quedé sorprendido por las posibilidades que nos ofrece.",
+    description: [
+      "Cuando descubrí Docker, me voló la cabeza.",
+      "Es una herramienta que te permite crear contenedores, como cápsulas, donde puedes meter toda tu app y sus dependencias para que funcione igual en cualquier entorno.",
+      'Olvídate del “en mi máquina funciona".',
+      "Lo uso principalmente para montar entornos de desarrollo súper rápido y evitar problemas de compatibilidad.",
+    ],
   },
 ];
