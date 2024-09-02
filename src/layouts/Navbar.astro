@@ -2,17 +2,23 @@
 import IconSVG from "../components/IconSVG.astro";
 import { navItems } from "../data/data";
 const { path } = Astro.props;
+const navLinks = navItems.map((link) => {
+  if (link.href === path) {
+    return { ...link, current: true };
+  }
+  return link;
+});
 ---
 
 <nav class="hidden rounded bg-[#2b2b31] sticky top-0 md:block shadow-lg z-10">
   <div class="max-w-[1100px] mx-auto md:flex justify-end gap-5">
     {
-      navItems.map((item) => {
+      navLinks.map((item) => {
         return (
           <a
             href={item.href}
             target={item.newTab ? "_blank" : "_self"}
-            class={`text-lg font-semibold p-2 py-4 text-lime border-b border-transparent hover:border-lime ${(path === "home" && item.href == "/") || item.href.includes(path) ? "border-b border-lime" : ""} transition-all flex items-center`}
+            class={`text-lg font-semibold p-2 py-4 text-lime border-b border-b-transparent hover:border-lime ${item.current && "border-b border-b-lime"} transition-all flex items-center`}
           >
             {item.text}
             {item.icon && (
@@ -35,36 +41,23 @@ const { path } = Astro.props;
       left: rect.left + window.scrollX,
     };
   }
-  const btnMenu = document.querySelector("#btnMenu");
-  const closeMenu = document.querySelector("#closeMenu");
-  const responsiveMenu = document.querySelector("#responsiveMenu");
 
-  btnMenu.addEventListener("click", (event) => {
-    responsiveMenu.classList.toggle("max-h-0");
-    responsiveMenu.classList.toggle("max-h-96");
-  });
+  // const linkButtons = document.querySelectorAll("nav a");
+  // linkButtons.forEach((link) => {
+  //   link.addEventListener("click", (e) => {
+  //     if (!e.target.href.includes("#")) return;
 
-  closeMenu.addEventListener("click", (event) => {
-    responsiveMenu.classList.toggle("max-h-0");
-    responsiveMenu.classList.toggle("max-h-96");
-  });
+  //     e.preventDefault();
+  //     const linkToGo = link.getAttribute("href");
+  //     const elementToGo = document.querySelector(linkToGo);
 
-  const linkButtons = document.querySelectorAll("nav a");
-  linkButtons.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      if (!e.target.href.includes("#")) return;
+  //     const coords =
+  //       linkToGo === "#index" ? { top: 0, left: 0 } : getCoords(elementToGo);
+  //     window.scrollTo(coords);
 
-      e.preventDefault();
-      const linkToGo = link.getAttribute("href");
-      const elementToGo = document.querySelector(linkToGo);
-
-      const coords =
-        linkToGo === "#index" ? { top: 0, left: 0 } : getCoords(elementToGo);
-      window.scrollTo(coords);
-
-      setTimeout(() => {
-        btnMenu.click();
-      }, 100);
-    });
-  });
+  //     setTimeout(() => {
+  //       btnMenu.click();
+  //     }, 100);
+  //   });
+  // });
 </script>

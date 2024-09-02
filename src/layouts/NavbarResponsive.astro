@@ -2,6 +2,12 @@
 import IconSVG from "../components/IconSVG.astro";
 import { navItems } from "../data/data";
 const { path } = Astro.props;
+const navLinks = navItems.map((link) => {
+  if (link.href === path) {
+    return { ...link, current: true };
+  }
+  return link;
+});
 ---
 
 <nav
@@ -11,31 +17,47 @@ const { path } = Astro.props;
     <IconSVG iconData={[{ name: "burger", size: "40px" }]} />
   </button>
   <div
-    class="absolute max-h-0 bg-[#2b2b31] rounded transition-all flex flex-col overflow-hidden left-0 right-0"
+    class="absolute -translate-y-full top-0 h-screen bg-[#2b2b31] rounded transition-all flex flex-col overflow-hidden left-0 right-0"
     id="responsiveMenu"
   >
-    <div class="flex justify-end px-3 w-full">
+    <div class="flex justify-end p-3 w-full">
       <button class="cursor-pointer" id="closeMenu">
         <IconSVG iconData={[{ name: "close", size: "40px" }]} />
       </button>
     </div>
-    {
-      navItems.map((item) => {
-        return (
-          <a
-            href={item.href}
-            target={item.newTab ? "_blank" : "_self"}
-            class={`text-lg font-semibold py-3 px-5 text-lime flex items-center gap-2 ${(path === "home" && item.href == "/") || item.href.includes(path) ? "border-b border-lime" : ""}`}
-          >
-            {item.text}
-            {item.icon && (
-              <div class="flex-shrink-0">
-                <IconSVG iconData={[{ name: "pdf", size: "20" }]} />
-              </div>
-            )}
-          </a>
-        );
-      })
-    }
+    <div class="flex flex-col items-center flex-grow gap-6 py-10">
+      {
+        navLinks.map((item) => {
+          return (
+            <a
+              href={item.href}
+              target={item.newTab ? "_blank" : "_self"}
+              class={`text-lg font-semibold py-3 px-5 text-lime flex items-center gap-2 ${item.current && "border-b border-lime"}`}
+            >
+              {item.text}
+              {item.icon && (
+                <div class="flex-shrink-0">
+                  <IconSVG iconData={[{ name: "pdf", size: "20" }]} />
+                </div>
+              )}
+            </a>
+          );
+        })
+      }
+    </div>
   </div>
 </nav>
+
+<script>
+  const btnMenu = document.querySelector("#btnMenu");
+  const closeMenu = document.querySelector("#closeMenu");
+  const responsiveMenu = document.querySelector("#responsiveMenu");
+
+  btnMenu.addEventListener("click", (event) => {
+    responsiveMenu.classList.toggle("-translate-y-full");
+  });
+
+  closeMenu.addEventListener("click", (event) => {
+    responsiveMenu.classList.toggle("-translate-y-full");
+  });
+</script>
