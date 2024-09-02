@@ -50,9 +50,10 @@ const { title, metaDescription } = Astro.props;
               <slot name="center-title" />
             </h1>
           </div>
-          <div>
-            <slot name="center" />
+          <div class="blog-content">
+            <slot name="blog-center" />
           </div>
+          <slot name="blog-footer" />
         </div>
       </section>
       <aside class="main-grid--sidebar">

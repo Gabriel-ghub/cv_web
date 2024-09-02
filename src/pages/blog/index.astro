@@ -16,7 +16,7 @@ const postSorted = allPosts.toSorted((a, b) => {
   <Fragment slot="center-title">
     ¡Bienvenido a mi blog de desarrollo web!
   </Fragment>
-  <Fragment slot="center">
+  <Fragment slot="blog-center">
     <div class="flex flex-col gap-y-8">
       <div class="blog-content">
         <p>
@@ -49,25 +49,27 @@ const postSorted = allPosts.toSorted((a, b) => {
           >.
         </p>
       </div>
-      <div>
-        <h2 class="text-3xl mb-2">Últimos Post</h2>
-        <div class="post-list-container">
-          <ul class="flex flex-col gap-y-6">
-            {
-              postSorted.map((post) => (
-                <li>
-                  <PostCard
-                    url={post.url}
-                    title={post.frontmatter.title}
-                    date={post.frontmatter.pubDate}
-                    lastModified=""
-                  />
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-      </div>
     </div>
   </Fragment>
+  <Fragment slot="blog-footer">
+    <div>
+      <h2 class="text-3xl mb-2">Últimos Post</h2>
+      <div class="post-list-container">
+        <ul class="flex flex-col gap-y-6">
+          {
+            postSorted.map((post) => (
+              <li>
+                <PostCard
+                  url={post.url}
+                  title={post.frontmatter.title}
+                  date={post.frontmatter.pubDate}
+                  lastModified=""
+                />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div></Fragment
+  >
 </BlogLayout>
