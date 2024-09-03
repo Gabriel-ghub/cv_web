@@ -2,6 +2,7 @@
 import Image from "astro/components/Image.astro";
 // import gabriel from "../images/gabriel.jpg";
 import gabriel from "../images/gabrielromero.png";
+import LogosSlider from "./LogosSlider.astro";
 ---
 
 <style>
@@ -21,26 +22,63 @@ import gabriel from "../images/gabrielromero.png";
 </style>
 
 <header
-  class="flex flex-col md:flex-row w-full gap-5 justify-between items-center mt-10"
+  class="flex flex-col md:flex-row w-full gap-5 justify-between items-center mt-10 grid-header"
   id="index"
 >
-  <div class="p-2 md:p-6 rounded-lg w-full flex flex-col gap-3">
-    <div>
-      <h1 class="text-4xl md:text-5xl font-bold text-center kalam">
-        Gabriel Romero<br />
-        Desarrollador web<br />
-        Front-end
-      </h1>
-    </div>
+  <div class="grid-header__title">
+    <h1 class="text-4xl md:text-5xl font-bold text-center kalam">
+      Gabriel Romero<br />
+      Desarrollador web<br />
+      Front-end
+    </h1>
   </div>
+
   <div
-    class="p-2 md:p-6 flex justify-center items-center relative img_container"
+    class="p-2 md:p-6 flex justify-center items-center relative img_container grid-header__image"
   >
     <Image
       src={gabriel}
-      width={600}
+      width={400}
       alt="Foto de Gabriel Romero, programador web, sonriendo"
       class="gr_img"
     />
   </div>
+  <div
+    class="grid-header__logos max-w-[500px] overflow-hidden sm:justify-self-center"
+  >
+    <LogosSlider />
+  </div>
 </header>
+
+<style>
+  .grid-header {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "image"
+      "logos";
+  }
+
+  @media screen and (min-width: 768px) {
+    .grid-header {
+      grid-template-columns: 60% 40%;
+      grid-template-areas:
+        "title image"
+        "logos image";
+    }
+  }
+
+  .grid-header__title {
+    grid-area: title;
+    align-self: end;
+  }
+
+  .grid-header__logos {
+    grid-area: logos;
+  }
+
+  .grid-header__image {
+    grid-area: image;
+  }
+</style>

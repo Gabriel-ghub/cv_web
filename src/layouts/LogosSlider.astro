@@ -1,0 +1,116 @@
+---
+import IconSVG from "../components/IconSVG.astro";
+
+const logos = [
+  {
+    name: "html",
+    size: "30",
+  },
+  {
+    name: "css",
+    size: "30",
+  },
+  {
+    name: "js",
+    size: "30",
+  },
+  {
+    name: "react",
+    size: "30",
+  },
+  {
+    name: "ts",
+    size: "30",
+  },
+  {
+    name: "php",
+    size: "30",
+  },
+  {
+    name: "node",
+    size: "30",
+  },
+  {
+    name: "docker",
+    size: "30",
+  },
+  {
+    name: "wp",
+    size: "30",
+  },
+  {
+    name: "git",
+    size: "30",
+  },
+  {
+    name: "mysql",
+    size: "30",
+  },
+];
+---
+
+<div class="logos-wrapper w-full max-w-full mx-auto overflow-hidden flex py-3">
+  <div class="flex gap-x-10 px-5 logos-animate">
+    {
+      logos.map((logo) => {
+        return (
+          <div>
+            <IconSVG iconData={[logo]} />
+          </div>
+        );
+      })
+    }
+  </div>
+  <div class="flex gap-x-10 px-5 logos-animate">
+    {
+      logos.map((logo) => {
+        return (
+          <div>
+            <IconSVG iconData={[logo]} />
+          </div>
+        );
+      })
+    }
+  </div>
+</div>
+
+<style>
+  .logos-animate {
+    animation: toLeft;
+    animation-duration: 30s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  .logos-wrapper {
+    position: relative;
+  }
+
+  .logos-wrapper::before,
+  .logos-wrapper::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      rgba(23, 23, 28, 1) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    z-index: 2;
+    width: 30px;
+  }
+
+  .logos-wrapper::after {
+    right: 0;
+    background: linear-gradient(
+      270deg,
+      rgba(23, 23, 28, 1) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+  @keyframes toLeft {
+    to {
+      transform: translateX(-100%);
+    }
+  }
+</style>

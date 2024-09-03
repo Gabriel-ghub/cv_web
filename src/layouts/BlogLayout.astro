@@ -57,7 +57,7 @@ const { title, metaDescription } = Astro.props;
         </div>
       </section>
       <aside class="main-grid--sidebar">
-        <div class="sticky top-16">
+        <div class="sticky top-20">
           <slot name="sidebar">
             <h2 class="font-semibold text-2xl mb-2">Categorías</h2>
             <ul class="flex">
@@ -66,7 +66,7 @@ const { title, metaDescription } = Astro.props;
                   return (
                     <li>
                       <a
-                        class="font-semibold capitalize underline
+                        class="capitalize underline
                       flex gap-2 border hover:border-lime transition-all rounded items-center py-1 px-3"
                         href={`/tags/${tag.url.toLowerCase()}`}
                       >

@@ -26,9 +26,8 @@ const postSorted = allPosts.toSorted((a, b) => {
 
         <p>
           Investigo, pruebo, aprendo y supero. Pero, pasado un tiempo, cuando
-          quiero o necesito volver a hacerlo, me encuentro con las típicas
-          preguntas: <span class="font-semibold italic"
-            >"¿Cómo fue que lo hice?"</span
+          quiero volver a hacerlo, me encuentro con las típicas preguntas: <span
+            class="font-semibold italic">"¿Cómo fue que lo hice?"</span
           >, <span class="font-semibold italic">
             "¿Cómo funcionaba esto?"</span
           >.
@@ -52,8 +51,8 @@ const postSorted = allPosts.toSorted((a, b) => {
     </div>
   </Fragment>
   <Fragment slot="blog-footer">
-    <div>
-      <h2 class="text-3xl mb-2">Últimos Post</h2>
+    <div class="flex flex-col gap-y-6">
+      <h2 class="text-3xl font-semibold">Últimos Post</h2>
       <div class="post-list-container">
         <ul class="flex flex-col gap-y-6">
           {

@@ -18,7 +18,7 @@ const navLinks = navItems.map((link) => {
           <a
             href={item.href}
             target={item.newTab ? "_blank" : "_self"}
-            class={`text-lg font-semibold p-2 py-4 text-lime border-b border-b-transparent hover:border-lime ${item.current && "border-b border-b-lime"} transition-all flex items-center`}
+            class={`text-lg font-semibold p-2 py-4 text-lime border-b  hover:border-lime ${item.current ? "border-b-lime" : "border-b-transparent"} transition-all flex items-center`}
           >
             {item.text}
             {item.icon && (

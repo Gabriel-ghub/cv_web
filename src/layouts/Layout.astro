@@ -38,6 +38,16 @@ const { title, metaDescription, frontmatter, path } = Astro.props;
   </body>
 </html>
 <style is:global>
+  @font-face {
+    font-family: "Montserrat";
+    src: url("/fonts/Montserrat.ttf");
+  }
+
+  @font-face {
+    font-family: "Lexend";
+    src: url("/fonts/Lexend.ttf");
+  }
+
   :root {
     --lime: #c0f25b;
     --blue: #ac86dd;
@@ -51,17 +61,27 @@ const { title, metaDescription, frontmatter, path } = Astro.props;
 
   html {
     background-color: rgb(23, 23, 28);
-    font-family: "Inter", sans-serif;
+    /* font-family: "Lexend Deca", sans-serif; */
     box-sizing: border-box;
     scroll-behavior: smooth;
+    color: white;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: Montserrat, sans-serif;
   }
 
   p,
-  h1,
-  h2,
-  h3,
-  li {
-    color: white;
+  ul,
+  li,
+  a,
+  span {
+    font-family: Lexend, sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    letter-spacing: 0.4px;
   }
 
   .main-grid
@@ -73,21 +93,6 @@ const { title, metaDescription, frontmatter, path } = Astro.props;
 
     ) {
     @apply mb-3;
-  }
-  p {
-    @apply text-lg;
-  }
-
-  h1 {
-    @apply text-3xl;
-  }
-
-  h2 {
-    @apply text-2xl;
-  }
-
-  h3 {
-    @apply text-3xl;
   }
 
   pre {
@@ -106,8 +111,28 @@ const { title, metaDescription, frontmatter, path } = Astro.props;
     list-style: revert;
     margin: revert;
     padding: revert;
-    font-size: 18px;
   }
+
+  .post-content h1 {
+    font-size: 36px;
+    @apply font-semibold;
+  }
+
+  .post-content h2 {
+    font-size: 30px;
+    @apply font-semibold;
+  }
+
+  .post-content h3 {
+    font-size: 28px;
+    @apply font-semibold;
+  }
+
+  .post-content span {
+    font-size: 16px;
+    word-break: break-all;
+  }
+
   .post-content a {
     @apply text-blue-500 underline;
   }

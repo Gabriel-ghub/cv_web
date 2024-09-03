@@ -12,6 +12,7 @@ url: "docker"
 icon: "docker"
 ---
 
+<div class="mb-20">
 En este tutorial iniciaremos un proyecto de Laravel dentro de un contenedor de Docker. Esto nos permitirá programar en nuestro HOST sin necesidad de tener instalado PHP, un servidor y la base de datos.
 
 Comenzamos definiendo el archivo docker-compose.yml que nos permitirá crear los contenedores.
@@ -88,7 +89,9 @@ Y tendremos nuestros contenedores corriendo. Accediendo a localhost:8000 (escog�
 En nuestro HOST, en la carpeta my-project (o el nombre que le hayamos puesto),
 veremos los archivos del proyecto. Esto se debe a que montamos el volumen.
 
-## **¿Quieres utilizar Laravel como API?**
+</div>
+
+## ¿Quieres utilizar Laravel como API?
 
 La imagen de Laravel que utilizamos no está configurada para utilizarla como API REST; si queremos hacer uso de ella, debemos habilitarla.
 
