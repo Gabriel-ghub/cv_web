@@ -3,6 +3,7 @@ import { custom } from "astro:schema";
 import BreadCrumbs from "../components/BreadCrumbs.astro";
 import IconSVG from "../components/IconSVG.astro";
 import Layout from "./Layout.astro";
+import { SearchPosts } from "../components/SearchPosts";
 const allPosts = await Astro.glob("../pages/posts/*.mdx");
 const uniqueTags = allPosts.reduce((acc, current, index) => {
   if (index === 0) {
@@ -29,18 +30,22 @@ const { title, metaDescription } = Astro.props;
 
 <Layout title={title} metaDescription={metaDescription} path="/blog">
   <div class="max-w-[1100px] mx-auto p-3 border-b border-gray-400">
-    <slot name="breadcrumbs">
-      <BreadCrumbs
-        links={[
-          {
-            page: "Inicio",
-            url: "/blog",
-            current: true,
-          },
-        ]}
-      />
-    </slot>
+    <div class="flex justify-between">
+      <slot name="breadcrumbs">
+        <BreadCrumbs
+          links={[
+            {
+              page: "Inicio",
+              url: "/blog",
+              current: true,
+            },
+          ]}
+        />
+      </slot>
+      <SearchPosts client:only="react" posts={allPosts} />
+    </div>
   </div>
+
   <main class="flex justify-center pt-5 lg:pt-10">
     <div class="w-full max-w-[1100px] main-grid relative">
       <section class="main-grid--center">

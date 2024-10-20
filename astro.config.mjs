@@ -3,9 +3,11 @@ import tailwind from "@astrojs/tailwind";
 import relativeLinks from "astro-relative-links";
 import mdx from "@astrojs/mdx";
 
+import react from "@astrojs/react";
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), relativeLinks(), mdx()],
+  integrations: [tailwind(), relativeLinks(), mdx(), react()],
   markdown: {
     shikiConfig: {
       // Choose from Shiki's built-in themes (or add your own)
