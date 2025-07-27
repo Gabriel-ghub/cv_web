@@ -1,24 +1,38 @@
 ---
-import CardWork from "../components/CardWork.astro";
-import Section from "../components/Section.astro";
+import CardWork from '../components/CardWork.astro';
+import Section from '../components/Section.astro';
 
 const experience = [
   {
-    position: "Desarrollador front-end",
-    company: "ADR Formación",
-    dates: "Marzo 2022 - Actualidad",
+    position: 'Desarrollador WordPress y React JS',
+    company: 'hiberus',
+    dates: 'Enero 2025 - Actualidad',
     tasks: [
-      "Mantenimiento web.",
-      "Desarrollo responsive.",
-      "Soporte en SEO técnico.",
-      "Desarrollo web con React JS.",
-      "Soporte a back-end con PHP y MySQL.",
+      'Desarrollo de web con WordPress.',
+      'Desarrollo de bloques de Gutenberg customizados con React JS.',
+      'Desarrollo de plugins personalizados.',
+      'Resolución de incidencias.',
+    ],
+  },
+  {
+    position: 'Desarrollador front-end',
+    company: 'ADR Formación',
+    dates: 'Marzo 2022 - Dicimbre 2025',
+    tasks: [
+      'Mantenimiento web.',
+      'Desarrollo responsive.',
+      'Soporte en SEO técnico.',
+      'Desarrollo web con React JS.',
+      'Soporte a back-end con PHP y MySQL.',
     ],
   },
 ];
 ---
 
-<Section name="Experiencia laboral" id="experience">
+<Section
+  name='Experiencia laboral'
+  id='experience'
+>
   {
     experience.map((exp) => {
       return <CardWork experience={exp} />;
