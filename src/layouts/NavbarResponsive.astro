@@ -60,4 +60,11 @@ const navLinks = navItems.map((link) => {
   closeMenu.addEventListener("click", (event) => {
     responsiveMenu.classList.toggle("-translate-y-full");
   });
+
+  const menuLinks = responsiveMenu.querySelectorAll("a");
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      responsiveMenu.classList.add("-translate-y-full");
+    });
+  });
 </script>
